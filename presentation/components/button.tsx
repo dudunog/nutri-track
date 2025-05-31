@@ -32,7 +32,7 @@ export function Button({
     <TouchableOpacity
       activeOpacity={0.7}
       disabled={isLoading}
-      className={`w-full h-14 items-center justify-center rounded-xl ${variants[variant]} ${className}`}
+      className={`w-full h-14 flex-row items-center justify-center rounded-xl ${variants[variant]} ${className}`}
       {...rest}
     >
       {isLoading ? (
