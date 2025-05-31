@@ -4,7 +4,7 @@
     "slug": "nutri-track",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.svg",
+    "icon": "./assets/images/logo.svg",
     "scheme": "nutritrack",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -16,10 +16,6 @@
       "supportsTablet": true
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
       "edgeToEdgeEnabled": true
     },
     "web": {

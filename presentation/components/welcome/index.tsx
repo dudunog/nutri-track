@@ -1,21 +1,25 @@
-import { Image, Text, TouchableOpacity, View } from "react-native";
-
-import { s } from "./styles";
+import { Image, Text, View } from "react-native";
+import { Button } from "../button";
 
 export function Welcome() {
   return (
-    <View style={s.container}>
-      <Image source={require("@/assets/images/logo.png")} style={s.logo} />
+    <View className="flex-1 justify-center items-center">
+      <Image
+        source={require("@/assets/images/logo.png")}
+        className="w-24 h-24 mb-4"
+      />
 
-      <Text style={s.title}>NutriTrack</Text>
+      <Text className="mt-3 text-3xl font-bold text-green-base">
+        NutriTrack
+      </Text>
 
-      <View style={s.buttonsContainer}>
-        <TouchableOpacity style={s.startButton} onPress={() => {}}>
-          <Text style={s.startButtonText}>Começar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={s.loginButton} onPress={() => {}}>
-          <Text style={s.loginButtonText}>Já tenho uma conta</Text>
-        </TouchableOpacity>
+      <View className="mt-14 flex-col gap-4 w-full">
+        <Button title="Começar" variant="primary" onPress={() => {}} />
+        <Button
+          title="Já tenho uma conta"
+          variant="secondary"
+          onPress={() => {}}
+        />
       </View>
     </View>
   );
