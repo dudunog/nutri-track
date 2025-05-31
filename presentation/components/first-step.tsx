@@ -1,4 +1,4 @@
-import { Image, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { Button } from "./button";
 
 export function FirstStep() {
@@ -13,7 +13,6 @@ export function FirstStep() {
       </Text>
 
       <View className="mt-5 flex-col gap-4 w-full">
-        <Image source={require("@/assets/images/weight-loss.svg")} />
         <Button title="Perder peso" variant="secondary" onPress={() => {}} />
         <Button title="Manter peso" variant="secondary" onPress={() => {}} />
         <Button
