@@ -11,13 +11,15 @@ type FirstStepProps = {
   subtitle?: string;
   options: Option[];
   onContinue: () => void;
+  renderContent?: () => React.ReactNode;
 };
 
 export function FirstStep({
   title,
   subtitle,
   options,
-  onContinue
+  onContinue,
+  renderContent
 }: FirstStepProps) {
   return (
     <View className="mt-20 justify-center">
@@ -39,6 +41,8 @@ export function FirstStep({
           />
         ))
         }
+        
+        { renderContent ? ( <View className="mt-5 flex-col gap-4 w-full">{ renderContent() }</View>) : ('')}
 
         <Button
           title="Continuar"
