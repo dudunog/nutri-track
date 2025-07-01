@@ -30,7 +30,7 @@ export default function Home() {
         title="Qual o seu objetivo?"
         subtitle="Vamos precisar de algumas informações para ajustar o seu plano."
         options={ options }
-        onContinue={() => router.push("/user-objetives")}
+        onContinue={() => router.push("/user-activity-level")}
        />
     </View>
   );
