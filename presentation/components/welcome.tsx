@@ -23,7 +23,7 @@ export function Welcome() {
         <Button
           title="Já tenho uma conta"
           variant="secondary"
-          onPress={() => {}}
+          onPress={() => router.push("/login")}
         />
       </View>
     </View>

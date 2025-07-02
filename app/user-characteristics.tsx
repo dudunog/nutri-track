@@ -15,7 +15,7 @@ export default function UserCharacteristics() {
   }, [navigation]);
 
   return (
-    <View style={{ flex: 1, padding: 12 }}>
+    <View style={{ flex: 12, padding: 12 }}>
       <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 2, color: "#22c55e" }}>
         Qual sua idade?
       </Text>
