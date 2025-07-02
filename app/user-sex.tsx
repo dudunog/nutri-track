@@ -17,7 +17,7 @@ export default function UserSex() {
   const options = [
     { title: "Masculino", onPress: () => handleSelect("man") },
     { title: "Feminino", onPress: () => handleSelect("woman") },
-  ];  
+  ];
 
   return (
     <View style={{ flex: 1, padding: 40, gap: 40 }}>
