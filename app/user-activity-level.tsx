@@ -24,9 +24,9 @@ export default function UserActivityLevel() {
     <View style={{ flex: 1, padding: 40, gap: 40 }}>
       <FirstStep
         title="Qual o seu nível de atividade física diariamente?"
-        options={ options }
+        options={options}
         onContinue={() => router.push("/user-sex")}
-       />
+      />
     </View>
   );
 }

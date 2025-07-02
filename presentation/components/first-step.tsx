@@ -22,20 +22,20 @@ export function FirstStep({
   return (
     <View className="mt-20 justify-center">
       <Text className="mt-10 text-3xl font-semibold text-green-base">
-        { title }
+        {title}
       </Text>
 
       <Text className="mt-4 text-xl text-gray-base">
-        { subtitle }
+        {subtitle}
       </Text>
 
       <View className="mt-5 flex-col gap-4 w-full">
-        { options.map((option, index) => (
+        {options.map((option, index) => (
           <Button
-            key= { index }
-            title= { option.title }
+            key={index}
+            title={option.title}
             variant="secondary"
-            onPress={ option.onPress }
+            onPress={option.onPress}
           />
         ))
         }
@@ -44,7 +44,7 @@ export function FirstStep({
           title="Continuar"
           variant="primary"
           className="mt-10"
-          onPress={ onContinue }
+          onPress={onContinue}
         />
       </View>
     </View>

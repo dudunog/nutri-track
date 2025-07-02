@@ -3,7 +3,7 @@ import { router, useNavigation } from "expo-router";
 import { useEffect } from "react";
 import { View } from "react-native";
 
-export default function Home() {
+export default function UserCharacteristics() {
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -15,22 +15,17 @@ export default function Home() {
   }
 
   const options = [
-    { title: "Perder peso", onPress: () => handleSelect("Perder peso") },
-    { title: "Manter peso", onPress: () => handleSelect("Manter peso") },
-    {
-      title: "Ganhar massa muscular",
-      onPress: () => handleSelect("Ganhar massa muscular"),
-    },
-    { title: "Melhorar a saúde", onPress: () => handleSelect("Melhorar a saúde") },
+    { title: "Leve", onPress: () => handleSelect("Leve") },
+    { title: "Moderado", onPress: () => handleSelect("Moderado") },
+    { title: "Intenso", onPress: () => handleSelect("Intenso") },
   ];
 
   return (
     <View style={{ flex: 1, padding: 40, gap: 40 }}>
       <FirstStep
-        title="Qual o seu objetivo?"
-        subtitle="Vamos precisar de algumas informações para ajustar o seu plano."
+        title="Qual a sua altura?"
         options={options}
-        onContinue={() => router.push("/user-activity-level")}
+        onContinue={() => router.push("/user-sex")}
       />
     </View>
   );
