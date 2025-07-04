@@ -100,15 +100,14 @@ export default function Analytics() {
       <Text className="text-2xl font-bold text-green-base mb-6 text-center">
         Resumo Nutricional
       </Text>
-      {/* Cards de Macros um embaixo do outro */}
       <View className="gap-6 mb-8">
         {macros.map((macro, idx) => (
           <View
             key={macro.label}
             className={`w-full ${macro.color} rounded-3xl shadow-md flex-row items-center gap-4`}
-            style={{ borderRadius: 24, padding: 24 }}
+            style={{ borderRadius: 24, paddingHorizontal: 18, paddingVertical: 3 }}
           >
-            <View className="mr-4">{macro.icon}</View>
+            <View>{macro.icon}</View>
             <View className="flex-1">
               <Text className="text-xs text-gray-500 font-medium mb-2">
                 {macro.label}
@@ -135,7 +134,6 @@ export default function Analytics() {
           </View>
         ))}
       </View>
-      {/* Gráfico de barras real */}
       <View
         className="mt-5 bg-white rounded-3xl shadow-md mb-10"
         style={{ borderRadius: 24, padding: 24 }}
@@ -144,9 +142,6 @@ export default function Analytics() {
           <Text className="text-base font-semibold text-green-base">
             Distribuição dos Macros (%)
           </Text>
-          <View className="bg-green-base rounded-full p-2">
-            <Text className="text-white text-lg">📊</Text>
-          </View>
         </View>
         <BarChart
           data={chartData}
@@ -170,7 +165,6 @@ export default function Analytics() {
           style={{ borderRadius: 20 }}
         />
       </View>
-      {/* Cards de Refeições */}
       <Text className="mt-5 text-lg font-bold text-green-base mb-4">
         Refeições do Dia
       </Text>

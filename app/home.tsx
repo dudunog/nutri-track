@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { useRouter } from "expo-router";
+import { Button } from "@/presentation/components/button";
 
 const lastMeal = {
   name: "Almoço",
@@ -21,20 +22,18 @@ export default function Home() {
   return (
     <View className="flex-1 justify-end bg-gray-100">
       <View className="flex-1 px-6 pt-10">
-        {/* Título de boas vindas */}
         <Text className="mt-14 text-2xl font-bold text-green-base mb-6">
-          Bem-vindo(a) de volta, Eduarda!
+          Bem-vindo(a) de volta, Gabriela!
         </Text>
-        {/* Última refeição */}
         <View
           className="bg-white rounded-3xl shadow-md p-6 mb-6"
           style={{ borderRadius: 24 }}
         >
           <Text className="text-lg font-bold text-green-base mb-2">
-            Última refeição
-          </Text>
-          <Text className="text-base text-gray-600 mb-2">
-            {lastMeal.name} às {lastMeal.time}
+            Última refeição:{' '}
+            <Text className="text-base font-thin text-gray-600 mb-2">
+              {lastMeal.name.toLocaleLowerCase()} às {lastMeal.time}
+            </Text>
           </Text>
           <View className="flex-row gap-6 mt-2">
             <Text className="text-base text-gray-500">
@@ -55,7 +54,6 @@ export default function Home() {
             </Text>
           </View>
         </View>
-        {/* Card do nutricionista */}
         <TouchableOpacity
           className="bg-white rounded-3xl shadow-md p-6 flex-row items-center gap-4"
           style={{ borderRadius: 24 }}
@@ -79,14 +77,16 @@ export default function Home() {
             <Text className="text-base text-gray-700">{nutritionist.name}</Text>
           </View>
         </TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push("/food-list")}>
+          <Button variant="primary" title="Lista de alimentos" onPress={() => router.push("/food-list")} className="text-lg font-bold text-green-base mt-6 mb-2" />
+        </TouchableOpacity>
       </View>
-      {/* Barra inferior */}
       <View className="w-full bg-green-soft flex-row justify-around items-center h-20 border-t border-green-light">
         <TouchableOpacity className="items-center flex-1" activeOpacity={1}>
           <Text className="text-2xl" style={{ color: "#257F49" }}>
             ▦
           </Text>
-          <Text className="text-green-base font-bold text-sm mt-1">painel</Text>
+          <Text className="text-green-base font-bold text-sm mt-1">Painel</Text>
         </TouchableOpacity>
         <TouchableOpacity className="items-center flex-1" activeOpacity={0.7}>
           <Text className="text-2xl">🍳</Text>
