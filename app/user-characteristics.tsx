@@ -68,9 +68,7 @@ export default function UserCharacteristics() {
             paddingHorizontal: 10,
           }}
         >
-          <Text className="text-sm font-bold text-green-base">
-            cm
-          </Text>
+          <Text className="text-sm font-bold text-green-base">cm</Text>
         </View>
       </View>
 
@@ -106,9 +104,7 @@ export default function UserCharacteristics() {
             paddingHorizontal: 10,
           }}
         >
-          <Text className="text-sm font-bold text-green-base">
-            kg
-          </Text>
+          <Text className="text-sm font-bold text-green-base">kg</Text>
         </View>
       </View>
 
@@ -144,9 +140,7 @@ export default function UserCharacteristics() {
             paddingHorizontal: 10,
           }}
         >
-          <Text className="text-sm font-bold text-green-base">
-            kg
-          </Text>
+          <Text className="text-sm font-bold text-green-base">kg</Text>
         </View>
       </View>
 
