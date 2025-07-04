@@ -22,19 +22,18 @@ export default function UserCharacteristics() {
       <TextInput
         style={{
           borderWidth: 2,
-          borderColor: "#22c55e",
           borderRadius: 8,
           padding: 8,
           fontSize: 16,
           marginBottom: 6,
           color: "#22c55e",
         }}
+        className="mt-3 border-2 border-green-base rounded-lg p-2 text-lg text-green-base"
         placeholder="Digite sua idade"
-        placeholderTextColor="#22c55e"
         keyboardType="numeric"
         value={age}
         onChangeText={setAge}
-        maxLength={3}
+        maxLength={2}
       />
 
       <Text className="text-3xl font-semibold text-green-base">
@@ -46,7 +45,6 @@ export default function UserCharacteristics() {
         <TextInput
           style={{
             borderWidth: 2,
-            borderColor: "#22c55e",
             borderRadius: 8,
             padding: 8,
             fontSize: 16,
@@ -54,6 +52,7 @@ export default function UserCharacteristics() {
             width: 100,
             marginRight: 6,
           }}
+          className="mt-3border-2 border-green-base rounded-lg p-2 text-lg text-green-base"
           placeholder="Altura"
           placeholderTextColor="#22c55e"
           keyboardType="numeric"
@@ -69,7 +68,7 @@ export default function UserCharacteristics() {
             paddingHorizontal: 10,
           }}
         >
-          <Text style={{ color: "#166534", fontWeight: "bold", fontSize: 14 }}>
+          <Text className="text-sm font-bold text-green-base">
             cm
           </Text>
         </View>
@@ -84,7 +83,6 @@ export default function UserCharacteristics() {
         <TextInput
           style={{
             borderWidth: 2,
-            borderColor: "#22c55e",
             borderRadius: 8,
             padding: 8,
             fontSize: 16,
@@ -92,6 +90,7 @@ export default function UserCharacteristics() {
             width: 100,
             marginRight: 6,
           }}
+          className="mt-3 border-2 border-green-base rounded-lg p-2 text-lg text-green-base"
           placeholder="Peso"
           placeholderTextColor="#22c55e"
           keyboardType="numeric"
@@ -107,7 +106,7 @@ export default function UserCharacteristics() {
             paddingHorizontal: 10,
           }}
         >
-          <Text style={{ color: "#166534", fontWeight: "bold", fontSize: 14 }}>
+          <Text className="text-sm font-bold text-green-base">
             kg
           </Text>
         </View>
@@ -122,7 +121,6 @@ export default function UserCharacteristics() {
         <TextInput
           style={{
             borderWidth: 2,
-            borderColor: "#22c55e",
             borderRadius: 8,
             padding: 8,
             fontSize: 16,
@@ -130,6 +128,7 @@ export default function UserCharacteristics() {
             width: 100,
             marginRight: 6,
           }}
+          className="mt-3 border-2 border-green-base rounded-lg p-2 text-lg text-green-base"
           placeholder="Meta"
           placeholderTextColor="#22c55e"
           keyboardType="numeric"
@@ -145,7 +144,7 @@ export default function UserCharacteristics() {
             paddingHorizontal: 10,
           }}
         >
-          <Text style={{ color: "#166534", fontWeight: "bold", fontSize: 14 }}>
+          <Text className="text-sm font-bold text-green-base">
             kg
           </Text>
         </View>

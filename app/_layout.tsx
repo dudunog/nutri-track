@@ -49,6 +49,7 @@ function RootLayoutNav() {
     <ThemeProvider value={DefaultTheme}>
       <Stack>
         <Stack.Screen name="home" options={{ headerShown: false }} />
+        <Stack.Screen name="analytics" options={{ title: "Resumo" }} />
       </Stack>
     </ThemeProvider>
   );
