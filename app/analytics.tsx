@@ -137,10 +137,10 @@ export default function Analytics() {
       </View>
       {/* Gráfico de barras real */}
       <View
-        className="bg-white rounded-3xl shadow-md mb-10"
+        className="mt-5 bg-white rounded-3xl shadow-md mb-10"
         style={{ borderRadius: 24, padding: 24 }}
       >
-        <View className="flex-row items-center justify-between mb-6">
+        <View className="mt-5flex-row items-center justify-between mb-6">
           <Text className="text-base font-semibold text-green-base">
             Distribuição dos Macros (%)
           </Text>
@@ -171,7 +171,7 @@ export default function Analytics() {
         />
       </View>
       {/* Cards de Refeições */}
-      <Text className="text-lg font-bold text-green-base mb-4">
+      <Text className="mt-5 text-lg font-bold text-green-base mb-4">
         Refeições do Dia
       </Text>
       <View className="gap-6 mb-8">

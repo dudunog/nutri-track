@@ -36,7 +36,7 @@ export default function Profile() {
       </View>
       <View
         className="mt-5 bg-white rounded-3xl shadow-md p-10 mb-10 flex-col items-center gap-6"
-        style={{ borderRadius: 24 }}
+        style={{ borderRadius: 24, padding: 24 }}
       >
         <View className="flex-row items-center mb-6">
           <MaterialCommunityIcons
@@ -66,8 +66,8 @@ export default function Profile() {
         </View>
       </View>
       <View
-        className="mt-5 bg-white rounded-3xl shadow-md p-10 mb-10"
-        style={{ borderRadius: 24 }}
+        className="mt-5 bg-white rounded-3xl shadow-md mb-10"
+        style={{ borderRadius: 24, padding: 24 }}
       >
         <Text className="text-2xl font-bold text-green-base mb-6">
           Preferências de comida
@@ -83,8 +83,8 @@ export default function Profile() {
         </View>
       </View>
       <View
-        className="mt-5 bg-white rounded-3xl shadow-md p-10 mb-10"
-        style={{ borderRadius: 24 }}
+        className="mt-5 bg-white rounded-3xl shadow-md mb-10"
+        style={{ borderRadius: 24, padding: 24 }}
       >
         <Text className="text-2xl font-bold text-green-base mb-6">
           Comidas que não gosto
