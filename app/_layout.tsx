@@ -55,6 +55,7 @@ function RootLayoutNav() {
           name="nutritionist-profile"
           options={{ title: "Nutricionista" }}
         />
+        <Stack.Screen name="food-list" options={{ title: "Lista de Alimentos" }} />
       </Stack>
     </ThemeProvider>
   );
