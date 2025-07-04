@@ -50,6 +50,11 @@ function RootLayoutNav() {
       <Stack>
         <Stack.Screen name="home" options={{ headerShown: false }} />
         <Stack.Screen name="analytics" options={{ title: "Resumo" }} />
+        <Stack.Screen name="profile" options={{ title: "Perfil" }} />
+        <Stack.Screen
+          name="nutritionist-profile"
+          options={{ title: "Nutricionista" }}
+        />
       </Stack>
     </ThemeProvider>
   );
