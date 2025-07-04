@@ -16,7 +16,7 @@ export default function UserCharacteristics() {
 
   return (
     <View style={{ flex: 12, padding: 12 }}>
-      <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 2, color: "#22c55e" }}>
+      <Text className="text-3xl font-semibold text-green-base">
         Qual sua idade?
       </Text>
       <TextInput
@@ -34,12 +34,15 @@ export default function UserCharacteristics() {
         keyboardType="numeric"
         value={age}
         onChangeText={setAge}
-        maxLength={3} />
+        maxLength={3}
+      />
 
-      <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 2, color: "#22c55e" }}>
+      <Text className="text-3xl font-semibold text-green-base">
         Qual a sua altura?
       </Text>
-      <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 6 }}>
+      <View
+        style={{ flexDirection: "row", alignItems: "center", marginBottom: 6 }}
+      >
         <TextInput
           style={{
             borderWidth: 2,
@@ -56,16 +59,28 @@ export default function UserCharacteristics() {
           keyboardType="numeric"
           value={height}
           onChangeText={setHeight}
-          maxLength={3} />
-        <View style={{ backgroundColor: "#bbf7d0", borderRadius: 6, paddingVertical: 6, paddingHorizontal: 10 }}>
-          <Text style={{ color: "#166534", fontWeight: "bold", fontSize: 14 }}>cm</Text>
+          maxLength={3}
+        />
+        <View
+          style={{
+            backgroundColor: "#bbf7d0",
+            borderRadius: 6,
+            paddingVertical: 6,
+            paddingHorizontal: 10,
+          }}
+        >
+          <Text style={{ color: "#166534", fontWeight: "bold", fontSize: 14 }}>
+            cm
+          </Text>
         </View>
       </View>
 
-      <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 2, color: "#22c55e" }}>
+      <Text className="text-3xl font-semibold text-green-base">
         Quanto você pesa?
       </Text>
-      <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 6 }}>
+      <View
+        style={{ flexDirection: "row", alignItems: "center", marginBottom: 6 }}
+      >
         <TextInput
           style={{
             borderWidth: 2,
@@ -82,16 +97,28 @@ export default function UserCharacteristics() {
           keyboardType="numeric"
           value={weight}
           onChangeText={setWeight}
-          maxLength={3} />
-        <View style={{ backgroundColor: "#bbf7d0", borderRadius: 6, paddingVertical: 6, paddingHorizontal: 10 }}>
-          <Text style={{ color: "#166534", fontWeight: "bold", fontSize: 14 }}>kg</Text>
+          maxLength={3}
+        />
+        <View
+          style={{
+            backgroundColor: "#bbf7d0",
+            borderRadius: 6,
+            paddingVertical: 6,
+            paddingHorizontal: 10,
+          }}
+        >
+          <Text style={{ color: "#166534", fontWeight: "bold", fontSize: 14 }}>
+            kg
+          </Text>
         </View>
       </View>
 
-      <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 2, color: "#22c55e" }}>
+      <Text className="text-3xl font-semibold text-green-base">
         Qual é a sua meta de peso?
       </Text>
-      <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 8 }}>
+      <View
+        style={{ flexDirection: "row", alignItems: "center", marginBottom: 8 }}
+      >
         <TextInput
           style={{
             borderWidth: 2,
@@ -110,8 +137,17 @@ export default function UserCharacteristics() {
           onChangeText={setWeightGoal}
           maxLength={3}
         />
-        <View style={{ backgroundColor: "#bbf7d0", borderRadius: 6, paddingVertical: 6, paddingHorizontal: 10 }}>
-          <Text style={{ color: "#166534", fontWeight: "bold", fontSize: 14 }}>kg</Text>
+        <View
+          style={{
+            backgroundColor: "#bbf7d0",
+            borderRadius: 6,
+            paddingVertical: 6,
+            paddingHorizontal: 10,
+          }}
+        >
+          <Text style={{ color: "#166534", fontWeight: "bold", fontSize: 14 }}>
+            kg
+          </Text>
         </View>
       </View>
 
@@ -122,5 +158,4 @@ export default function UserCharacteristics() {
       />
     </View>
   );
-
 }

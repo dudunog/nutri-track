@@ -4,11 +4,13 @@ import { Button } from "./button";
 type Option = {
   title: string;
   onPress: () => void;
+  value: string;
 };
 
 type FirstStepProps = {
   title: string;
   subtitle?: string;
+  selectedItem?: string | null;
   options: Option[];
   onContinue: () => void;
 };
@@ -16,8 +18,9 @@ type FirstStepProps = {
 export function FirstStep({
   title,
   subtitle,
+  selectedItem,
   options,
-  onContinue
+  onContinue,
 }: FirstStepProps) {
   return (
     <View className="mt-20 justify-center">
@@ -25,20 +28,17 @@ export function FirstStep({
         {title}
       </Text>
 
-      <Text className="mt-4 text-xl text-gray-base">
-        {subtitle}
-      </Text>
+      <Text className="mt-4 text-xl text-gray-base">{subtitle}</Text>
 
       <View className="mt-5 flex-col gap-4 w-full">
         {options.map((option, index) => (
           <Button
             key={index}
             title={option.title}
-            variant="secondary"
+            variant={selectedItem === option.value ? "primary" : "secondary"}
             onPress={option.onPress}
           />
-        ))
-        }
+        ))}
 
         <Button
           title="Continuar"

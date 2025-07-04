@@ -14,7 +14,14 @@ export default function Login() {
 
   return (
     <View style={{ flex: 12, padding: 12 }}>
-      <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 2, color: "#000000" }}>
+      <Text
+        style={{
+          fontSize: 20,
+          fontWeight: "bold",
+          marginBottom: 2,
+          color: "#000000",
+        }}
+      >
         Email:
       </Text>
       <TextInput
@@ -32,9 +39,17 @@ export default function Login() {
         keyboardType="email-address"
         value={email}
         onChangeText={setEmail}
-        maxLength={100} />
+        maxLength={100}
+      />
 
-      <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 2, color: "#000000" }}>
+      <Text
+        style={{
+          fontSize: 20,
+          fontWeight: "bold",
+          marginBottom: 2,
+          color: "#000000",
+        }}
+      >
         Senha:
       </Text>
       <TextInput
@@ -52,12 +67,20 @@ export default function Login() {
         secureTextEntry
         value={password}
         onChangeText={setPassword}
-        maxLength={100} />
+        maxLength={100}
+      />
 
-      <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 2, color: "#22c55e" }}>
+      <Text
+        style={{
+          fontSize: 20,
+          fontWeight: "bold",
+          marginBottom: 2,
+          color: "#22c55e",
+        }}
+      >
         Esqueceu a senha?
       </Text>
-      
+
       <FirstStep
         onContinue={() => router.push("/user-objetives")}
         title={""}
