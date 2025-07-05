@@ -7,7 +7,7 @@
       "calories": 124,
       "protein": 2.6,
       "carbs": 25.8,
-      "fat": 1.0,
+      "fat": 1,
       "portion": "100g"
     },
     {
@@ -25,8 +25,8 @@
       "name": "Frango grelhado",
       "category": "Carnes",
       "calories": 165,
-      "protein": 31.0,
-      "carbs": 0.0,
+      "protein": 31,
+      "carbs": 0,
       "fat": 3.6,
       "portion": "100g"
     },
@@ -35,9 +35,9 @@
       "name": "Ovo cozido",
       "category": "Ovos",
       "calories": 155,
-      "protein": 13.0,
+      "protein": 13,
       "carbs": 1.1,
-      "fat": 11.0,
+      "fat": 11,
       "portion": "100g"
     },
     {
@@ -46,7 +46,7 @@
       "category": "Frutas",
       "calories": 89,
       "protein": 1.1,
-      "carbs": 23.0,
+      "carbs": 23,
       "fat": 0.3,
       "portion": "100g"
     },
@@ -56,7 +56,7 @@
       "category": "Frutas",
       "calories": 52,
       "protein": 0.3,
-      "carbs": 14.0,
+      "carbs": 14,
       "fat": 0.2,
       "portion": "100g"
     },
@@ -96,8 +96,8 @@
       "category": "Peixes",
       "calories": 206,
       "protein": 22.1,
-      "carbs": 0.0,
-      "fat": 13.0,
+      "carbs": 0,
+      "fat": 13,
       "portion": "100g"
     },
     {
@@ -115,9 +115,9 @@
       "name": "Queijo minas frescal",
       "category": "Laticínios",
       "calories": 264,
-      "protein": 17.0,
+      "protein": 17,
       "carbs": 3.2,
-      "fat": 20.0,
+      "fat": 20,
       "portion": "100g"
     },
     {
@@ -146,7 +146,7 @@
       "category": "Cereais",
       "calories": 247,
       "protein": 8.8,
-      "carbs": 41.0,
+      "carbs": 41,
       "fat": 3.4,
       "portion": "100g"
     },
@@ -156,7 +156,7 @@
       "category": "Laticínios",
       "calories": 35,
       "protein": 3.4,
-      "carbs": 5.0,
+      "carbs": 5,
       "fat": 0.1,
       "portion": "100g"
     },
@@ -165,7 +165,7 @@
       "name": "Abacate",
       "category": "Frutas",
       "calories": 160,
-      "protein": 2.0,
+      "protein": 2,
       "carbs": 8.5,
       "fat": 14.7,
       "portion": "100g"
@@ -185,7 +185,7 @@
       "name": "Batata inglesa",
       "category": "Tubérculos",
       "calories": 77,
-      "protein": 2.0,
+      "protein": 2,
       "carbs": 17.5,
       "fat": 0.1,
       "portion": "100g"
@@ -195,10 +195,102 @@
       "name": "Peito de peru",
       "category": "Carnes",
       "calories": 104,
-      "protein": 17.0,
-      "carbs": 1.0,
-      "fat": 3.0,
+      "protein": 17,
+      "carbs": 1,
+      "fat": 3,
       "portion": "100g"
+    }
+  ],
+  "meals": [
+    {
+      "id": 1,
+      "name": "Café da Manhã",
+      "time": "07:30",
+      "kcal": 350,
+      "carbs": 60,
+      "protein": 15,
+      "fat": 10
+    },
+    {
+      "id": 2,
+      "name": "Almoço",
+      "time": "12:45",
+      "kcal": 600,
+      "carbs": 90,
+      "protein": 30,
+      "fat": 20
+    },
+    {
+      "id": 3,
+      "name": "Lanche da Tarde",
+      "time": "16:00",
+      "kcal": 200,
+      "carbs": 35,
+      "protein": 5,
+      "fat": 4
+    },
+    {
+      "id": 4,
+      "name": "Jantar",
+      "time": "19:30",
+      "kcal": 400,
+      "carbs": 50,
+      "protein": 20,
+      "fat": 12
+    },
+    {
+      "id": "5479",
+      "name": "hehhehe",
+      "time": "14:05",
+      "kcal": 100,
+      "carbs": 100,
+      "protein": 100,
+      "fat": 100
+    },
+    {
+      "id": "cce1",
+      "name": "hehhehe123",
+      "time": "14:05",
+      "kcal": 100,
+      "carbs": 100,
+      "protein": 100,
+      "fat": 100
+    }
+  ],
+  "tips": [
+    {
+      "id": 1,
+      "text": "Inclua mais fibras no almoço para melhorar a digestão!"
+    },
+    {
+      "id": 2,
+      "text": "Beba água ao acordar para ativar o metabolismo."
+    }
+  ],
+  "reminders": [
+    {
+      "id": 1,
+      "text": "Não esqueça de registrar sua próxima refeição!"
+    }
+  ],
+  "water-records": [
+    {
+      "id": 1,
+      "amount": 250,
+      "time": "08:00",
+      "date": "2024-01-15"
+    },
+    {
+      "id": 2,
+      "amount": 300,
+      "time": "10:30",
+      "date": "2024-01-15"
+    },
+    {
+      "id": 3,
+      "amount": 200,
+      "time": "14:15",
+      "date": "2024-01-15"
     }
   ]
 }

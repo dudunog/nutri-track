@@ -55,7 +55,22 @@ function RootLayoutNav() {
           name="nutritionist-profile"
           options={{ title: "Nutricionista" }}
         />
-        <Stack.Screen name="food-list" options={{ title: "Lista de Alimentos" }} />
+        <Stack.Screen
+          name="food-list"
+          options={{ title: "Lista de Alimentos" }}
+        />
+        <Stack.Screen
+          name="meal-history"
+          options={{ title: "Histórico de Refeições" }}
+        />
+        <Stack.Screen
+          name="meal-register"
+          options={{ title: "Registrar Refeição" }}
+        />
+        <Stack.Screen
+          name="water-register"
+          options={{ title: "Registrar Água" }}
+        />
       </Stack>
     </ThemeProvider>
   );
