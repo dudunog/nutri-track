@@ -1,10 +1,18 @@
 import { User, LoginCredentials, SignupData } from "../domain/user";
+import {
+  UserPreferences,
+  UpdatePreferencesData,
+} from "../domain/user-preferences";
 
 export interface UserRepository {
   login(credentials: LoginCredentials): Promise<User | null>;
   signup(userData: SignupData): Promise<User>;
   getById(id: number): Promise<User | null>;
   getPatientsByNutritionistId(nutritionistId: number): Promise<User[]>;
+  updatePreferences(
+    userId: number,
+    preferences: UpdatePreferencesData
+  ): Promise<User>;
 }
 
 export class UserApiRepository implements UserRepository {
@@ -78,6 +86,43 @@ export class UserApiRepository implements UserRepository {
     } catch (error) {
       console.error("Erro ao buscar pacientes:", error);
       throw new Error("Erro ao buscar pacientes");
+    }
+  }
+
+  async updatePreferences(
+    userId: number,
+    preferences: UpdatePreferencesData
+  ): Promise<User> {
+    try {
+      const currentUser = await this.getById(userId);
+      if (!currentUser) {
+        throw new Error("Usuário não encontrado");
+      }
+
+      const updatedUser = {
+        ...currentUser,
+        preferences: {
+          ...currentUser.preferences,
+          ...preferences,
+        },
+      };
+
+      const response = await fetch(`${this.baseUrl}/users/${userId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedUser),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao atualizar preferências");
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error("Erro ao atualizar preferências:", error);
+      throw new Error("Erro ao atualizar preferências");
     }
   }
 }

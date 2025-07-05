@@ -1,6 +1,7 @@
 import { View, Text, ScrollView, Dimensions } from "react-native";
 import { MaterialCommunityIcons, FontAwesome5 } from "@expo/vector-icons";
 import { BarChart } from "react-native-chart-kit";
+import { useAuthGuard } from "../hooks/useAuthGuard";
 
 const macros = [
   {
@@ -92,6 +93,12 @@ const chartData = {
 const chartColors = ["#257F49", "#3B9B62", "#257F49", "#E9F3EF"];
 
 export default function Analytics() {
+  const { isAuthenticated } = useAuthGuard();
+
+  if (!isAuthenticated) {
+    return null;
+  }
+
   return (
     <ScrollView
       className="flex-1 bg-gray-100"
@@ -105,7 +112,11 @@ export default function Analytics() {
           <View
             key={macro.label}
             className={`w-full ${macro.color} rounded-3xl shadow-md flex-row items-center gap-4`}
-            style={{ borderRadius: 24, paddingHorizontal: 18, paddingVertical: 3 }}
+            style={{
+              borderRadius: 24,
+              paddingHorizontal: 18,
+              paddingVertical: 3,
+            }}
           >
             <View>{macro.icon}</View>
             <View className="flex-1">

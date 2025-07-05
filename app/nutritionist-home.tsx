@@ -2,9 +2,15 @@ import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import { useRouter } from "expo-router";
 import { Button } from "@/presentation/components/button";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useAuthGuard } from "../hooks/useAuthGuard";
 
 export default function NutritionistHome() {
   const router = useRouter();
+  const { user, isAuthenticated } = useAuthGuard();
+
+  if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <View className="flex-1 justify-end bg-gray-100">
@@ -22,7 +28,7 @@ export default function NutritionistHome() {
         </View>
 
         <View
-          className="bg-white rounded-3xl shadow-md p-6 mb-6"
+          className="mt-4 bg-white rounded-3xl shadow-md p-6 mb-6"
           style={{ borderRadius: 24 }}
         >
           <Text className="text-xl font-bold text-green-base mb-4">
@@ -53,8 +59,8 @@ export default function NutritionistHome() {
           </Text>
 
           <TouchableOpacity
-            className="flex-row items-center mb-4 p-4 bg-green-soft rounded-xl"
-            onPress={() => {}}
+            className="flex-row items-center mb-4 p-4 bg-green-soft rounded-xl gap-2"
+            onPress={() => router.push("/patient-list")}
             activeOpacity={0.7}
           >
             <MaterialCommunityIcons
@@ -78,7 +84,7 @@ export default function NutritionistHome() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            className="flex-row items-center mb-4 p-4 bg-green-soft rounded-xl"
+            className="flex-row items-center mb-4 p-4 bg-green-soft rounded-xl gap-2"
             onPress={() => {}}
             activeOpacity={0.7}
           >
@@ -103,7 +109,7 @@ export default function NutritionistHome() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            className="flex-row items-center p-4 bg-green-soft rounded-xl"
+            className="flex-row items-center p-4 bg-green-soft rounded-xl gap-2"
             onPress={() => {}}
             activeOpacity={0.7}
           >
@@ -205,15 +211,27 @@ export default function NutritionistHome() {
           </Text>
           <Text className="text-green-base font-bold text-sm mt-1">Painel</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="items-center flex-1" activeOpacity={0.7}>
+        <TouchableOpacity
+          className="items-center flex-1"
+          activeOpacity={0.7}
+          onPress={() => router.push("/patient-list")}
+        >
           <Text className="text-2xl">👥</Text>
           <Text className="text-black text-sm mt-1">Pacientes</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="items-center flex-1" activeOpacity={0.7}>
+        <TouchableOpacity
+          className="items-center flex-1"
+          activeOpacity={0.7}
+          onPress={() => router.push("/analytics")}
+        >
           <Text className="text-2xl">📊</Text>
           <Text className="text-black text-sm mt-1">Relatórios</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="items-center flex-1" activeOpacity={0.7}>
+        <TouchableOpacity
+          className="items-center flex-1"
+          activeOpacity={0.7}
+          onPress={() => router.push("/nutritionist-profile")}
+        >
           <Text className="text-2xl">👤</Text>
           <Text className="text-black text-sm mt-1">Perfil</Text>
         </TouchableOpacity>

@@ -1,7 +1,7 @@
 {
   "foods": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Arroz integral",
       "category": "Cereais",
       "calories": 124,
@@ -11,7 +11,7 @@
       "portion": "100g"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Feijão carioca",
       "category": "Leguminosas",
       "calories": 76,
@@ -21,7 +21,7 @@
       "portion": "100g"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Frango grelhado",
       "category": "Carnes",
       "calories": 165,
@@ -31,7 +31,7 @@
       "portion": "100g"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Ovo cozido",
       "category": "Ovos",
       "calories": 155,
@@ -41,7 +41,7 @@
       "portion": "100g"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Banana",
       "category": "Frutas",
       "calories": 89,
@@ -51,7 +51,7 @@
       "portion": "100g"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Maçã",
       "category": "Frutas",
       "calories": 52,
@@ -61,7 +61,7 @@
       "portion": "100g"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Batata doce",
       "category": "Tubérculos",
       "calories": 86,
@@ -71,7 +71,7 @@
       "portion": "100g"
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Brócolis",
       "category": "Vegetais",
       "calories": 34,
@@ -81,7 +81,7 @@
       "portion": "100g"
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Iogurte natural",
       "category": "Laticínios",
       "calories": 61,
@@ -91,7 +91,7 @@
       "portion": "100g"
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Salmão grelhado",
       "category": "Peixes",
       "calories": 206,
@@ -101,7 +101,7 @@
       "portion": "100g"
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "Aveia em flocos",
       "category": "Cereais",
       "calories": 389,
@@ -111,7 +111,7 @@
       "portion": "100g"
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "Queijo minas frescal",
       "category": "Laticínios",
       "calories": 264,
@@ -121,7 +121,7 @@
       "portion": "100g"
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "Alface",
       "category": "Vegetais",
       "calories": 15,
@@ -131,7 +131,7 @@
       "portion": "100g"
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "Tomate",
       "category": "Vegetais",
       "calories": 18,
@@ -141,7 +141,7 @@
       "portion": "100g"
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "Pão integral",
       "category": "Cereais",
       "calories": 247,
@@ -151,7 +151,7 @@
       "portion": "100g"
     },
     {
-      "id": 16,
+      "id": "16",
       "name": "Leite desnatado",
       "category": "Laticínios",
       "calories": 35,
@@ -161,7 +161,7 @@
       "portion": "100g"
     },
     {
-      "id": 17,
+      "id": "17",
       "name": "Abacate",
       "category": "Frutas",
       "calories": 160,
@@ -171,7 +171,7 @@
       "portion": "100g"
     },
     {
-      "id": 18,
+      "id": "18",
       "name": "Cenoura",
       "category": "Vegetais",
       "calories": 41,
@@ -181,7 +181,7 @@
       "portion": "100g"
     },
     {
-      "id": 19,
+      "id": "19",
       "name": "Batata inglesa",
       "category": "Tubérculos",
       "calories": 77,
@@ -191,7 +191,7 @@
       "portion": "100g"
     },
     {
-      "id": 20,
+      "id": "20",
       "name": "Peito de peru",
       "category": "Carnes",
       "calories": 104,
@@ -203,7 +203,7 @@
   ],
   "meals": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Café da Manhã",
       "time": "07:30",
       "kcal": 350,
@@ -212,7 +212,7 @@
       "fat": 10
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Almoço",
       "time": "12:45",
       "kcal": 600,
@@ -221,7 +221,7 @@
       "fat": 20
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Lanche da Tarde",
       "time": "16:00",
       "kcal": 200,
@@ -230,7 +230,7 @@
       "fat": 4
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Jantar",
       "time": "19:30",
       "kcal": 400,
@@ -255,47 +255,68 @@
       "carbs": 100,
       "protein": 100,
       "fat": 100
+    },
+    {
+      "id": "cb9a",
+      "name": "café da manha teste",
+      "time": "16:54",
+      "kcal": 50,
+      "carbs": 50,
+      "protein": 50,
+      "fat": 50
     }
   ],
   "tips": [
     {
-      "id": 1,
+      "id": "1",
       "text": "Inclua mais fibras no almoço para melhorar a digestão!"
     },
     {
-      "id": 2,
+      "id": "2",
       "text": "Beba água ao acordar para ativar o metabolismo."
     }
   ],
   "reminders": [
     {
-      "id": 1,
+      "id": "1",
       "text": "Não esqueça de registrar sua próxima refeição!"
     }
   ],
   "water-records": [
     {
-      "id": 1,
+      "id": "1",
       "amount": 250,
       "time": "08:00",
       "date": "2024-01-15"
     },
     {
-      "id": 2,
+      "id": "2",
       "amount": 300,
       "time": "10:30",
       "date": "2024-01-15"
     },
     {
-      "id": 3,
+      "id": "3",
       "amount": 200,
       "time": "14:15",
       "date": "2024-01-15"
+    },
+    {
+      "id": "e68b",
+      "amount": 50,
+      "time": "16:55",
+      "date": "2025-07-05"
+    },
+    {
+      "id": "97e3",
+      "amount": 599,
+      "time": "16:55",
+      "date": "2025-07-05"
     }
   ],
   "nutritionists": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Dr. João Nutri",
       "avatar": "https://randomuser.me/api/portraits/men/32.jpg",
       "phone": "+55 11 99999-9999",
@@ -304,33 +325,160 @@
       "experience": "8 anos de experiência",
       "crn": "CRN-3 12345",
       "availability": "Segunda a Sexta, 8h às 18h",
-      "userId": 1
+      "userId": 3
+    },
+    {
+      "id": "2",
+      "name": "Dra. Maria Nutri",
+      "avatar": "https://randomuser.me/api/portraits/women/45.jpg",
+      "phone": "+55 11 88888-8888",
+      "email": "maria.nutri@nutritrack.com",
+      "specialty": "Nutrição Esportiva",
+      "experience": "5 anos de experiência",
+      "crn": "CRN-3 54321",
+      "availability": "Segunda a Sexta, 9h às 17h",
+      "userId": 4
     }
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "João Silva",
       "email": "joao@example.com",
       "password": "123456",
       "type": "patient",
-      "nutritionistId": 1
+      "nutritionistId": 1,
+      "preferences": {
+        "objective": "lose-weight",
+        "activityLevel": "moderate",
+        "sex": "man",
+        "age": 28,
+        "height": 175,
+        "weight": 80,
+        "weightGoal": 70
+      }
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Maria Santos",
       "email": "maria@example.com",
+      "password": "123456",
+      "type": "patient",
+      "nutritionistId": 1,
+      "preferences": {
+        "objective": "maintain-weight",
+        "activityLevel": "light",
+        "sex": "woman",
+        "age": 32,
+        "height": 162,
+        "weight": 58,
+        "weightGoal": 58
+      }
+    },
+    {
+      "id": "3",
+      "name": "Dr. João Nutri",
+      "email": "joao.nutri@nutritrack.com",
+      "password": "123456",
+      "type": "nutritionist",
+      "crn": "CRN-3 12345",
+      "preferences": {
+        "objective": "improve-health",
+        "activityLevel": "intense",
+        "sex": "man",
+        "age": 35,
+        "height": 180,
+        "weight": 75,
+        "weightGoal": 75
+      }
+    },
+    {
+      "id": "4",
+      "name": "Dra. Maria Nutri",
+      "email": "maria.nutri@nutritrack.com",
+      "password": "123456",
+      "type": "nutritionist",
+      "crn": "CRN-3 54321",
+      "preferences": {
+        "objective": "maintain-weight",
+        "activityLevel": "moderate",
+        "sex": "woman",
+        "age": 28,
+        "height": 165,
+        "weight": 60,
+        "weightGoal": 60
+      }
+    },
+    {
+      "id": "532f",
+      "name": "teste",
+      "email": "joao.nutri123@nutritrack.com",
+      "password": "123456",
+      "type": "patient",
+      "nutritionistId": 1,
+      "preferences": {
+        "objective": "maintain-weight",
+        "activityLevel": "intense",
+        "sex": "man",
+        "age": 34,
+        "height": 170,
+        "weight": 70,
+        "weightGoal": 50
+      }
+    },
+    {
+      "id": "bdb2",
+      "name": "teste hehehe",
+      "email": "joao.nutri123@nutritrack.com",
       "password": "123456",
       "type": "patient",
       "nutritionistId": 1
     },
     {
-      "id": 3,
-      "name": "Dr. João Nutri",
-      "email": "joao.nutri@nutritrack.com",
+      "id": "09ac",
+      "name": "teste hehehe",
+      "email": "joao.nutri123@nutritrack.com",
+      "password": "123456",
+      "type": "patient",
+      "nutritionistId": 1
+    },
+    {
+      "id": "a3fb",
+      "name": "teste hehehe",
+      "email": "joao.nutri123@nutritrack.com",
+      "password": "123456",
+      "type": "patient",
+      "nutritionistId": 1
+    },
+    {
+      "id": "a8eb",
+      "name": "teste hehehe",
+      "email": "joao.nutri123@nutritrack.com",
+      "password": "123456",
+      "type": "patient",
+      "nutritionistId": 1,
+      "preferences": {
+        "objective": "gain-muscle",
+        "activityLevel": "intense",
+        "sex": "man",
+        "age": 21,
+        "height": 175,
+        "weight": 70,
+        "weightGoal": 60
+      }
+    },
+    {
+      "id": "bfd1",
+      "name": "teste123321@gmail.com",
+      "email": "teste",
       "password": "123456",
       "type": "nutritionist",
-      "crn": "CRN-3 12345"
+      "crn": "CRN-3 00000",
+      "preferences": {
+        "objective": "maintain-weight",
+        "activityLevel": "intense",
+        "sex": "woman"
+      }
     }
   ]
 }

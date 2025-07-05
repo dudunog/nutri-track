@@ -10,26 +10,34 @@ import {
 import { useState, useEffect } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as Linking from "expo-linking";
+import { useRouter } from "expo-router";
 import { GetNutritionistUseCase } from "../usecases/get-nutritionist.usecase";
 import { NutritionistApiRepository } from "../data/nutritionist-api.repository";
 import { Nutritionist } from "../domain/nutritionist";
+import { useAuthGuard } from "../hooks/useAuthGuard";
 
 export default function NutritionistProfile() {
+  const router = useRouter();
+  const { user, isAuthenticated } = useAuthGuard();
   const [nutritionist, setNutritionist] = useState<Nutritionist | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const currentUserId = 1;
-
   useEffect(() => {
     async function fetchNutritionist() {
+      if (!user) {
+        setError("Usuário não autenticado");
+        setLoading(false);
+        return;
+      }
+
       setLoading(true);
       try {
         const getNutritionistUseCase = new GetNutritionistUseCase(
           new NutritionistApiRepository()
         );
         const nutritionistData = await getNutritionistUseCase.executeByUserId(
-          currentUserId
+          user.id
         );
 
         if (nutritionistData) {
@@ -45,7 +53,7 @@ export default function NutritionistProfile() {
     }
 
     fetchNutritionist();
-  }, [currentUserId]);
+  }, [user]);
 
   const handlePhoneCall = async () => {
     if (!nutritionist) return;
@@ -80,6 +88,16 @@ export default function NutritionistProfile() {
       Alert.alert("Erro", "Erro ao tentar abrir email");
     }
   };
+
+  const handleEditProfile = () => {
+    if (nutritionist) {
+      router.push("/nutritionist-edit-profile" as any);
+    }
+  };
+
+  if (!isAuthenticated) {
+    return null;
+  }
 
   if (loading) {
     return (
@@ -141,9 +159,17 @@ export default function NutritionistProfile() {
         className="mt-4 bg-white rounded-3xl shadow-md p-6 mb-6 gap-2"
         style={{ borderRadius: 24 }}
       >
-        <Text className="text-xl font-bold text-green-base mb-4">
-          Informações de Contato
-        </Text>
+        <View className="flex-row justify-between items-center mb-4">
+          <Text className="text-xl font-bold text-green-base">
+            Informações de Contato
+          </Text>
+          <TouchableOpacity
+            onPress={handleEditProfile}
+            className="p-2 bg-green-soft rounded-lg"
+          >
+            <MaterialCommunityIcons name="pencil" size={20} color="#257F49" />
+          </TouchableOpacity>
+        </View>
 
         <TouchableOpacity
           className="flex-row items-center mb-5 p-4 bg-green-soft rounded-xl gap-2"

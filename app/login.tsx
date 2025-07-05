@@ -11,17 +11,21 @@ import { useRouter } from "expo-router";
 import { Button } from "@/presentation/components/button";
 import { LoginUseCase } from "../usecases/login.usecase";
 import { UserApiRepository } from "../data/user-api.repository";
-import { User } from "../domain/user";
+import { useAuth } from "../contexts/auth-context";
 
 export default function Login() {
   const router = useRouter();
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async () => {
+    setErrorMessage("");
+
     if (!email.trim() || !password.trim()) {
-      Alert.alert("Erro", "Preencha todos os campos");
+      setErrorMessage("Preencha todos os campos");
       return;
     }
 
@@ -34,16 +38,37 @@ export default function Login() {
       });
 
       if (user) {
-        if (user.type === "patient") {
-          router.replace("/home");
-        } else if (user.type === "nutritionist") {
-          router.replace("/nutritionist-home");
+        login(user);
+
+        const hasCompletePreferences =
+          user.preferences &&
+          user.preferences.objective &&
+          user.preferences.activityLevel &&
+          user.preferences.sex &&
+          user.preferences.age &&
+          user.preferences.height &&
+          user.preferences.weight &&
+          user.preferences.weightGoal;
+
+        if (!hasCompletePreferences) {
+          router.replace("/user-objetives");
+        } else {
+          if (user.type === "patient") {
+            router.replace("/home");
+          } else if (user.type === "nutritionist") {
+            router.replace("/nutritionist-home");
+          }
         }
       } else {
-        Alert.alert("Erro", "Email ou senha incorretos");
+        setErrorMessage(
+          "Email ou senha incorretos. Verifique suas credenciais e tente novamente."
+        );
       }
     } catch (error: any) {
-      Alert.alert("Erro", error.message || "Erro ao fazer login");
+      setErrorMessage(
+        error.message ||
+          "Erro ao fazer login. Verifique sua conexão e tente novamente."
+      );
     } finally {
       setLoading(false);
     }
@@ -65,13 +90,24 @@ export default function Login() {
           Login
         </Text>
 
+        {errorMessage ? (
+          <View className="mb-4 p-3 bg-red-100 border border-red-300 rounded-lg">
+            <Text className="text-red-700 text-sm text-center">
+              {errorMessage}
+            </Text>
+          </View>
+        ) : null}
+
         <View className="mb-5">
           <Text className="text-base text-gray-700 mb-3">Email</Text>
           <TextInput
             className="border border-gray-300 rounded-xl p-4 text-base bg-white"
             placeholder="Digite seu email"
             value={email}
-            onChangeText={setEmail}
+            onChangeText={(text) => {
+              setEmail(text);
+              setErrorMessage("");
+            }}
             keyboardType="email-address"
             autoCapitalize="none"
             style={{ fontSize: 16 }}
@@ -84,7 +120,10 @@ export default function Login() {
             className="border border-gray-300 rounded-xl p-4 text-base bg-white"
             placeholder="Digite sua senha"
             value={password}
-            onChangeText={setPassword}
+            onChangeText={(text) => {
+              setPassword(text);
+              setErrorMessage("");
+            }}
             secureTextEntry
             style={{ fontSize: 16 }}
           />

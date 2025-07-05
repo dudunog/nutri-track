@@ -14,16 +14,16 @@ import { ListMealsUseCase } from "../usecases/list-meals.usecase";
 import { MealApiRepository } from "../data/meal-api.repository";
 import { GetNutritionistUseCase } from "../usecases/get-nutritionist.usecase";
 import { NutritionistApiRepository } from "../data/nutritionist-api.repository";
+import { useAuthGuard } from "../hooks/useAuthGuard";
 import { Tip } from "../domain/tip";
 import { Reminder } from "../domain/reminder";
 import { Meal } from "../domain/meal";
 import { Nutritionist } from "../domain/nutritionist";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
-const currentUserId = 1;
-
 export default function Home() {
   const router = useRouter();
+  const { user, isAuthenticated } = useAuthGuard();
   const [tip, setTip] = useState<Tip | null>(null);
   const [reminder, setReminder] = useState<Reminder | null>(null);
   const [meals, setMeals] = useState<Meal[]>([]);
@@ -32,6 +32,8 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchData() {
+      if (!user) return;
+
       setLoading(true);
       try {
         const tips = await new ListTipsUseCase().execute();
@@ -47,7 +49,7 @@ export default function Home() {
           new NutritionistApiRepository()
         );
         const nutritionistData = await getNutritionistUseCase.executeByUserId(
-          currentUserId
+          user.id
         );
         setNutritionist(nutritionistData);
       } finally {
@@ -55,12 +57,25 @@ export default function Home() {
       }
     }
     fetchData();
-  }, []);
+  }, [user]);
 
   const lastMeal = meals.length > 0 ? meals[meals.length - 1] : null;
   const nextMeal = meals.find(
     (meal) => meal.time > (lastMeal?.time || "00:00")
   );
+
+  if (!isAuthenticated) {
+    return null;
+  }
+
+  if (loading) {
+    return (
+      <View className="flex-1 bg-gray-100 justify-center items-center">
+        <ActivityIndicator size="large" color="#257F49" />
+        <Text className="text-green-base text-lg mt-4">Carregando...</Text>
+      </View>
+    );
+  }
 
   return (
     <View className="flex-1 justify-end bg-gray-100">
@@ -190,11 +205,7 @@ export default function Home() {
           <Text className="text-2xl" style={{ color: "#257F49" }}>
             ▦
           </Text>
-          <Text className="text-green-base font-bold text-sm mt-1">Painel</Text>
-        </TouchableOpacity>
-        <TouchableOpacity className="items-center flex-1" activeOpacity={0.7}>
-          <Text className="text-2xl">🍳</Text>
-          <Text className="text-black text-sm mt-1">Diário</Text>
+          <Text className="text-green-base font-bold text-sm mt-1">Início</Text>
         </TouchableOpacity>
         <TouchableOpacity
           className="items-center flex-1"
@@ -202,7 +213,7 @@ export default function Home() {
           onPress={() => router.push("/analytics")}
         >
           <Text className="text-2xl">📊</Text>
-          <Text className="text-black text-sm mt-1">Progresso</Text>
+          <Text className="text-black text-sm mt-1">Analytics</Text>
         </TouchableOpacity>
         <TouchableOpacity
           className="items-center flex-1"
@@ -213,13 +224,6 @@ export default function Home() {
           <Text className="text-black text-sm mt-1">Perfil</Text>
         </TouchableOpacity>
       </View>
-      {loading && (
-        <ActivityIndicator
-          size="large"
-          color="#257F49"
-          style={{ position: "absolute", top: "50%", left: "50%" }}
-        />
-      )}
     </View>
   );
 }

@@ -1,8 +1,9 @@
-import { Nutritionist } from "../domain/nutritionist";
+import { Nutritionist, UpdateNutritionistData } from "../domain/nutritionist";
 
 export interface NutritionistRepository {
   getByUserId(userId: number): Promise<Nutritionist | null>;
   getById(id: number): Promise<Nutritionist | null>;
+  update(id: number, data: UpdateNutritionistData): Promise<Nutritionist>;
 }
 
 export class NutritionistApiRepository implements NutritionistRepository {
@@ -34,6 +35,40 @@ export class NutritionistApiRepository implements NutritionistRepository {
     } catch (error) {
       console.error("Erro ao buscar nutricionista:", error);
       throw new Error("Erro ao buscar nutricionista");
+    }
+  }
+
+  async update(
+    id: number,
+    data: UpdateNutritionistData
+  ): Promise<Nutritionist> {
+    try {
+      const currentNutritionist = await this.getById(id);
+      if (!currentNutritionist) {
+        throw new Error("Nutricionista não encontrado");
+      }
+
+      const updatedNutritionist = {
+        ...currentNutritionist,
+        ...data,
+      };
+
+      const response = await fetch(`${this.baseUrl}/nutritionists/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedNutritionist),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao atualizar dados do nutricionista");
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error("Erro ao atualizar nutricionista:", error);
+      throw new Error("Erro ao atualizar dados do nutricionista");
     }
   }
 }

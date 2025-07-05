@@ -1,5 +1,6 @@
 import { View, Text, Image, ScrollView } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useAuthGuard } from "../hooks/useAuthGuard";
 
 const user = {
   name: "Eduarda Silva",
@@ -12,6 +13,12 @@ const user = {
 };
 
 export default function Profile() {
+  const { isAuthenticated } = useAuthGuard();
+
+  if (!isAuthenticated) {
+    return null;
+  }
+
   return (
     <ScrollView
       className="flex-1 bg-gray-100"

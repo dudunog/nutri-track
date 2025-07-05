@@ -1,3 +1,5 @@
+import { UserPreferences } from "./user-preferences";
+
 export interface User {
   id: number;
   name: string;
@@ -6,6 +8,7 @@ export interface User {
   type: "patient" | "nutritionist";
   nutritionistId?: number;
   crn?: string;
+  preferences?: UserPreferences;
 }
 
 export interface LoginCredentials {

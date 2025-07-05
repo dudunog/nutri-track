@@ -12,9 +12,11 @@ import { Button } from "@/presentation/components/button";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { CreateMealUseCase } from "../usecases/create-meal.usecase";
 import { MealApiRepository } from "../data/meal-api.repository";
+import { useAuthGuard } from "../hooks/useAuthGuard";
 
 export default function MealRegister() {
   const router = useRouter();
+  const { isAuthenticated } = useAuthGuard();
   const [mealName, setMealName] = useState("");
   const [calories, setCalories] = useState("");
   const [carbs, setCarbs] = useState("");
@@ -52,6 +54,10 @@ export default function MealRegister() {
       setLoading(false);
     }
   };
+
+  if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <View className="flex-1 bg-gray-100">

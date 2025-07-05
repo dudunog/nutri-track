@@ -1,7 +1,8 @@
 import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
-import { Slot, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { AuthProvider } from "../contexts/auth-context";
 
 import {
   useFonts,
@@ -41,13 +42,21 @@ export default function RootLayout() {
     return null;
   }
 
-  return <RootLayoutNav />;
+  return (
+    <AuthProvider>
+      <RootLayoutNav />
+    </AuthProvider>
+  );
 }
 
 function RootLayoutNav() {
   return (
     <ThemeProvider value={DefaultTheme}>
-      <Stack>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
         <Stack.Screen name="home" options={{ headerShown: false }} />
         <Stack.Screen name="analytics" options={{ title: "Resumo" }} />
         <Stack.Screen name="profile" options={{ title: "Perfil" }} />

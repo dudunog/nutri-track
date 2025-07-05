@@ -11,10 +11,12 @@ import { useRouter } from "expo-router";
 import { Button } from "@/presentation/components/button";
 import { SignupUseCase } from "../usecases/signup.usecase";
 import { UserApiRepository } from "../data/user-api.repository";
+import { useAuth } from "../contexts/auth-context";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function UserRegistration() {
   const router = useRouter();
+  const { login } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -53,24 +55,15 @@ export default function UserRegistration() {
         email: email.trim(),
         password,
         type: userType,
-        ...(userType === "patient" && { nutritionistId: 1 }), // TODO: Permitir seleção do nutricionista
-        ...(userType === "nutritionist" && { crn: "CRN-3 00000" }), // TODO: Permitir entrada do CRN
+        ...(userType === "patient" && { nutritionistId: 1 }),
+        ...(userType === "nutritionist" && { crn: "CRN-3 00000" }),
       };
 
       const user = await signupUseCase.execute(userData);
 
-      Alert.alert("Sucesso", "Conta criada com sucesso!", [
-        {
-          text: "OK",
-          onPress: () => {
-            if (user.type === "patient") {
-              router.replace("/home");
-            } else if (user.type === "nutritionist") {
-              router.replace("/nutritionist-home");
-            }
-          },
-        },
-      ]);
+      login(user);
+
+      router.replace("/user-objetives");
     } catch (error: any) {
       Alert.alert("Erro", error.message || "Erro ao criar conta");
     } finally {
@@ -229,7 +222,6 @@ export default function UserRegistration() {
           </TouchableOpacity>
         </View>
 
-        {/* Dica */}
         <View
           className="mt-8 bg-green-soft rounded-2xl p-4"
           style={{ borderRadius: 18 }}
