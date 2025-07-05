@@ -11,10 +11,11 @@ import { useRouter } from "expo-router";
 import { Button } from "@/presentation/components/button";
 import { LoginUseCase } from "../usecases/login.usecase";
 import { UserApiRepository } from "../data/user-api.repository";
-import { User } from "../domain/user";
+import { useAuth } from "../contexts/auth-context";
 
 export default function Login() {
   const router = useRouter();
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -34,10 +35,16 @@ export default function Login() {
       });
 
       if (user) {
-        if (user.type === "patient") {
-          router.replace("/home");
-        } else if (user.type === "nutritionist") {
-          router.replace("/nutritionist-home");
+        login(user);
+
+        if (!user.preferences) {
+          router.replace("/user-objetives");
+        } else {
+          if (user.type === "patient") {
+            router.replace("/home");
+          } else if (user.type === "nutritionist") {
+            router.replace("/nutritionist-home");
+          }
         }
       } else {
         Alert.alert("Erro", "Email ou senha incorretos");

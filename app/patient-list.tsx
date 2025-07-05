@@ -11,29 +11,31 @@ import { useRouter } from "expo-router";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { GetPatientsUseCase } from "../usecases/get-patients.usecase";
 import { UserApiRepository } from "../data/user-api.repository";
+import { useAuth } from "../contexts/auth-context";
 import { User } from "../domain/user";
 
 export default function PatientList() {
   const router = useRouter();
+  const { user } = useAuth();
   const [patients, setPatients] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const currentNutritionistId = 3;
-
   useEffect(() => {
-    loadPatients();
-  }, []);
+    if (user) {
+      loadPatients();
+    }
+  }, [user]);
 
   const loadPatients = async () => {
+    if (!user) return;
+
     setLoading(true);
     try {
       const getPatientsUseCase = new GetPatientsUseCase(
         new UserApiRepository()
       );
-      const patientsData = await getPatientsUseCase.execute(
-        currentNutritionistId
-      );
+      const patientsData = await getPatientsUseCase.execute(user.id);
       setPatients(patientsData);
     } catch (error: any) {
       setError(error.message || "Erro ao carregar pacientes");
@@ -41,6 +43,14 @@ export default function PatientList() {
       setLoading(false);
     }
   };
+
+  if (!user) {
+    return (
+      <View className="flex-1 bg-gray-100 justify-center items-center">
+        <Text className="text-green-base text-lg">Carregando...</Text>
+      </View>
+    );
+  }
 
   if (loading) {
     return (
