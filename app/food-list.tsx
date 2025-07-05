@@ -27,15 +27,20 @@ export default function FoodList() {
   }, []);
 
   return (
-    <ScrollView className="flex-1 bg-gray-100 px-4 py-6">
-      <Text className="text-2xl font-bold text-green-base mb-6 text-center">
+    <ScrollView
+      className="flex-1 bg-gray-100"
+      contentContainerStyle={{ paddingHorizontal: 20, paddingVertical: 28 }}
+    >
+      <Text className="text-3xl font-bold text-green-base mb-8 text-center">
         Lista de Alimentos
       </Text>
       {loading && (
         <ActivityIndicator size="large" color="#257F49" className="mt-10" />
       )}
-      {error && <Text className="text-red-600 text-center mt-4">{error}</Text>}
-      <View className="mt-2">
+      {error && (
+        <Text className="text-red-600 text-center mt-4 text-lg">{error}</Text>
+      )}
+      <View className="mt-5">
         {foods.map((food) => (
           <FoodListItem key={food.id} food={food} />
         ))}
