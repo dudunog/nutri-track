@@ -10,3 +10,12 @@ export interface Nutritionist {
   availability: string;
   userId: number;
 }
+
+export interface UpdateNutritionistData {
+  name?: string;
+  phone?: string;
+  email?: string;
+  specialty?: string;
+  experience?: string;
+  availability?: string;
+}

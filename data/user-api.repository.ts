@@ -94,13 +94,11 @@ export class UserApiRepository implements UserRepository {
     preferences: UpdatePreferencesData
   ): Promise<User> {
     try {
-      // Primeiro, buscar o usuário atual
       const currentUser = await this.getById(userId);
       if (!currentUser) {
         throw new Error("Usuário não encontrado");
       }
 
-      // Atualizar as preferências
       const updatedUser = {
         ...currentUser,
         preferences: {

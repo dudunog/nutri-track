@@ -19,10 +19,13 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async () => {
+    setErrorMessage("");
+
     if (!email.trim() || !password.trim()) {
-      Alert.alert("Erro", "Preencha todos os campos");
+      setErrorMessage("Preencha todos os campos");
       return;
     }
 
@@ -47,10 +50,15 @@ export default function Login() {
           }
         }
       } else {
-        Alert.alert("Erro", "Email ou senha incorretos");
+        setErrorMessage(
+          "Email ou senha incorretos. Verifique suas credenciais e tente novamente."
+        );
       }
     } catch (error: any) {
-      Alert.alert("Erro", error.message || "Erro ao fazer login");
+      setErrorMessage(
+        error.message ||
+          "Erro ao fazer login. Verifique sua conexão e tente novamente."
+      );
     } finally {
       setLoading(false);
     }
@@ -72,13 +80,24 @@ export default function Login() {
           Login
         </Text>
 
+        {errorMessage ? (
+          <View className="mb-4 p-3 bg-red-100 border border-red-300 rounded-lg">
+            <Text className="text-red-700 text-sm text-center">
+              {errorMessage}
+            </Text>
+          </View>
+        ) : null}
+
         <View className="mb-5">
           <Text className="text-base text-gray-700 mb-3">Email</Text>
           <TextInput
             className="border border-gray-300 rounded-xl p-4 text-base bg-white"
             placeholder="Digite seu email"
             value={email}
-            onChangeText={setEmail}
+            onChangeText={(text) => {
+              setEmail(text);
+              setErrorMessage("");
+            }}
             keyboardType="email-address"
             autoCapitalize="none"
             style={{ fontSize: 16 }}
@@ -91,7 +110,10 @@ export default function Login() {
             className="border border-gray-300 rounded-xl p-4 text-base bg-white"
             placeholder="Digite sua senha"
             value={password}
-            onChangeText={setPassword}
+            onChangeText={(text) => {
+              setPassword(text);
+              setErrorMessage("");
+            }}
             secureTextEntry
             style={{ fontSize: 16 }}
           />

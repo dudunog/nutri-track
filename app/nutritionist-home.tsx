@@ -32,7 +32,7 @@ export default function NutritionistHome() {
         </View>
 
         <View
-          className="bg-white rounded-3xl shadow-md p-6 mb-6"
+          className="mt-4 bg-white rounded-3xl shadow-md p-6 mb-6"
           style={{ borderRadius: 24 }}
         >
           <Text className="text-xl font-bold text-green-base mb-4">
@@ -63,8 +63,8 @@ export default function NutritionistHome() {
           </Text>
 
           <TouchableOpacity
-            className="flex-row items-center mb-4 p-4 bg-green-soft rounded-xl"
-            onPress={() => {}}
+            className="flex-row items-center mb-4 p-4 bg-green-soft rounded-xl gap-2"
+            onPress={() => router.push("/patient-list")}
             activeOpacity={0.7}
           >
             <MaterialCommunityIcons
@@ -88,7 +88,7 @@ export default function NutritionistHome() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            className="flex-row items-center mb-4 p-4 bg-green-soft rounded-xl"
+            className="flex-row items-center mb-4 p-4 bg-green-soft rounded-xl gap-2"
             onPress={() => {}}
             activeOpacity={0.7}
           >
@@ -113,7 +113,7 @@ export default function NutritionistHome() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            className="flex-row items-center p-4 bg-green-soft rounded-xl"
+            className="flex-row items-center p-4 bg-green-soft rounded-xl gap-2"
             onPress={() => {}}
             activeOpacity={0.7}
           >
@@ -215,7 +215,11 @@ export default function NutritionistHome() {
           </Text>
           <Text className="text-green-base font-bold text-sm mt-1">Painel</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="items-center flex-1" activeOpacity={0.7}>
+        <TouchableOpacity
+          className="items-center flex-1"
+          activeOpacity={0.7}
+          onPress={() => router.push("/patient-list")}
+        >
           <Text className="text-2xl">👥</Text>
           <Text className="text-black text-sm mt-1">Pacientes</Text>
         </TouchableOpacity>
@@ -223,7 +227,11 @@ export default function NutritionistHome() {
           <Text className="text-2xl">📊</Text>
           <Text className="text-black text-sm mt-1">Relatórios</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="items-center flex-1" activeOpacity={0.7}>
+        <TouchableOpacity
+          className="items-center flex-1"
+          activeOpacity={0.7}
+          onPress={() => router.push("/nutritionist-profile")}
+        >
           <Text className="text-2xl">👤</Text>
           <Text className="text-black text-sm mt-1">Perfil</Text>
         </TouchableOpacity>

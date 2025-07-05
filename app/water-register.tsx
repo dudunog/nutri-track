@@ -33,7 +33,7 @@ export default function WaterRegister() {
       const newWaterRecord = await createWaterRecordUseCase.execute({
         amount: parseInt(amount),
         time: time.trim(),
-        date: new Date().toISOString().split("T")[0], // YYYY-MM-DD format
+        date: new Date().toISOString().split("T")[0],
       });
 
       Alert.alert("Sucesso", "Registro de água salvo com sucesso!", [

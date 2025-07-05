@@ -33,7 +33,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchData() {
       if (!user) return;
-      
+
       setLoading(true);
       try {
         const tips = await new ListTipsUseCase().execute();

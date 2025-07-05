@@ -304,7 +304,19 @@
       "experience": "8 anos de experiência",
       "crn": "CRN-3 12345",
       "availability": "Segunda a Sexta, 8h às 18h",
-      "userId": 1
+      "userId": 3
+    },
+    {
+      "id": 2,
+      "name": "Dra. Maria Nutri",
+      "avatar": "https://randomuser.me/api/portraits/women/45.jpg",
+      "phone": "+55 11 88888-8888",
+      "email": "maria.nutri@nutritrack.com",
+      "specialty": "Nutrição Esportiva",
+      "experience": "5 anos de experiência",
+      "crn": "CRN-3 54321",
+      "availability": "Segunda a Sexta, 9h às 17h",
+      "userId": 4
     }
   ],
   "users": [
@@ -357,6 +369,23 @@
         "height": 180,
         "weight": 75,
         "weightGoal": 75
+      }
+    },
+    {
+      "id": 4,
+      "name": "Dra. Maria Nutri",
+      "email": "maria.nutri@nutritrack.com",
+      "password": "123456",
+      "type": "nutritionist",
+      "crn": "CRN-3 54321",
+      "preferences": {
+        "objective": "maintain-weight",
+        "activityLevel": "moderate",
+        "sex": "woman",
+        "age": 28,
+        "height": 165,
+        "weight": 60,
+        "weightGoal": 60
       }
     }
   ]
