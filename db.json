@@ -312,7 +312,25 @@
       "id": 1,
       "name": "João Silva",
       "email": "joao@example.com",
+      "password": "123456",
+      "type": "patient",
       "nutritionistId": 1
+    },
+    {
+      "id": 2,
+      "name": "Maria Santos",
+      "email": "maria@example.com",
+      "password": "123456",
+      "type": "patient",
+      "nutritionistId": 1
+    },
+    {
+      "id": 3,
+      "name": "Dr. João Nutri",
+      "email": "joao.nutri@nutritrack.com",
+      "password": "123456",
+      "type": "nutritionist",
+      "crn": "CRN-3 12345"
     }
   ]
 }
