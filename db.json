@@ -314,7 +314,16 @@
       "email": "joao@example.com",
       "password": "123456",
       "type": "patient",
-      "nutritionistId": 1
+      "nutritionistId": 1,
+      "preferences": {
+        "objective": "lose-weight",
+        "activityLevel": "moderate",
+        "sex": "man",
+        "age": 28,
+        "height": 175,
+        "weight": 80,
+        "weightGoal": 70
+      }
     },
     {
       "id": 2,
@@ -322,7 +331,16 @@
       "email": "maria@example.com",
       "password": "123456",
       "type": "patient",
-      "nutritionistId": 1
+      "nutritionistId": 1,
+      "preferences": {
+        "objective": "maintain-weight",
+        "activityLevel": "light",
+        "sex": "woman",
+        "age": 32,
+        "height": 162,
+        "weight": 58,
+        "weightGoal": 58
+      }
     },
     {
       "id": 3,
@@ -330,7 +348,16 @@
       "email": "joao.nutri@nutritrack.com",
       "password": "123456",
       "type": "nutritionist",
-      "crn": "CRN-3 12345"
+      "crn": "CRN-3 12345",
+      "preferences": {
+        "objective": "improve-health",
+        "activityLevel": "intense",
+        "sex": "man",
+        "age": 35,
+        "height": 180,
+        "weight": 75,
+        "weightGoal": 75
+      }
     }
   ]
 }
