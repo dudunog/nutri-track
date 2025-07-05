@@ -12,21 +12,22 @@ import { ListTipsUseCase } from "../usecases/list-tips.usecase";
 import { ListRemindersUseCase } from "../usecases/list-reminders.usecase";
 import { ListMealsUseCase } from "../usecases/list-meals.usecase";
 import { MealApiRepository } from "../data/meal-api.repository";
+import { GetNutritionistUseCase } from "../usecases/get-nutritionist.usecase";
+import { NutritionistApiRepository } from "../data/nutritionist-api.repository";
 import { Tip } from "../domain/tip";
 import { Reminder } from "../domain/reminder";
 import { Meal } from "../domain/meal";
+import { Nutritionist } from "../domain/nutritionist";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
-const nutritionist = {
-  name: "Dr. João Nutri",
-  avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-};
+const currentUserId = 1;
 
 export default function Home() {
   const router = useRouter();
   const [tip, setTip] = useState<Tip | null>(null);
   const [reminder, setReminder] = useState<Reminder | null>(null);
   const [meals, setMeals] = useState<Meal[]>([]);
+  const [nutritionist, setNutritionist] = useState<Nutritionist | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -41,6 +42,14 @@ export default function Home() {
           new MealApiRepository()
         ).execute();
         setMeals(mealsData);
+
+        const getNutritionistUseCase = new GetNutritionistUseCase(
+          new NutritionistApiRepository()
+        );
+        const nutritionistData = await getNutritionistUseCase.executeByUserId(
+          currentUserId
+        );
+        setNutritionist(nutritionistData);
       } finally {
         setLoading(false);
       }
@@ -134,29 +143,33 @@ export default function Home() {
           onPress={() => router.push("/food-list")}
           className="text-lg font-bold text-green-base mb-6"
         />
-        <TouchableOpacity
-          className="bg-white rounded-3xl shadow-md p-6 flex-row items-center gap-4"
-          style={{ borderRadius: 24 }}
-          onPress={() => router.push("/nutritionist-profile")}
-        >
-          <Image
-            source={{ uri: nutritionist.avatar }}
-            style={{
-              width: 56,
-              height: 56,
-              borderRadius: 28,
-              borderWidth: 2,
-              borderColor: "#257F49",
-              marginRight: 16,
-            }}
-          />
-          <View>
-            <Text className="text-lg font-bold text-green-base">
-              Seu nutricionista
-            </Text>
-            <Text className="text-base text-gray-700">{nutritionist.name}</Text>
-          </View>
-        </TouchableOpacity>
+        {nutritionist && (
+          <TouchableOpacity
+            className="bg-white rounded-3xl shadow-md p-6 flex-row items-center gap-4"
+            style={{ borderRadius: 24 }}
+            onPress={() => router.push("/nutritionist-profile")}
+          >
+            <Image
+              source={{ uri: nutritionist.avatar }}
+              style={{
+                width: 56,
+                height: 56,
+                borderRadius: 28,
+                borderWidth: 2,
+                borderColor: "#257F49",
+                marginRight: 16,
+              }}
+            />
+            <View>
+              <Text className="text-lg font-bold text-green-base">
+                Seu nutricionista
+              </Text>
+              <Text className="text-base text-gray-700">
+                {nutritionist.name}
+              </Text>
+            </View>
+          </TouchableOpacity>
+        )}
         <View className="flex-row justify-between mt-8 mb-2 gap-4">
           <Button
             variant="secondary"

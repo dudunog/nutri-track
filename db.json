@@ -292,5 +292,27 @@
       "time": "14:15",
       "date": "2024-01-15"
     }
+  ],
+  "nutritionists": [
+    {
+      "id": 1,
+      "name": "Dr. João Nutri",
+      "avatar": "https://randomuser.me/api/portraits/men/32.jpg",
+      "phone": "+55 11 99999-9999",
+      "email": "joao.nutri@nutritrack.com",
+      "specialty": "Nutrição Clínica",
+      "experience": "8 anos de experiência",
+      "crn": "CRN-3 12345",
+      "availability": "Segunda a Sexta, 8h às 18h",
+      "userId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "João Silva",
+      "email": "joao@example.com",
+      "nutritionistId": 1
+    }
   ]
 }
