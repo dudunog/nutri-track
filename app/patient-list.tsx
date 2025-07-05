@@ -11,12 +11,12 @@ import { useRouter } from "expo-router";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { GetPatientsUseCase } from "../usecases/get-patients.usecase";
 import { UserApiRepository } from "../data/user-api.repository";
-import { useAuth } from "../contexts/auth-context";
+import { useAuthGuard } from "../hooks/useAuthGuard";
 import { User } from "../domain/user";
 
 export default function PatientList() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuthGuard();
   const [patients, setPatients] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -44,12 +44,8 @@ export default function PatientList() {
     }
   };
 
-  if (!user) {
-    return (
-      <View className="flex-1 bg-gray-100 justify-center items-center">
-        <Text className="text-green-base text-lg">Carregando...</Text>
-      </View>
-    );
+  if (!isAuthenticated) {
+    return null;
   }
 
   if (loading) {
@@ -223,16 +219,16 @@ export default function PatientList() {
             activeOpacity={0.7}
           >
             <MaterialCommunityIcons
-              name="file-export"
+              name="chart-line"
               size={24}
               color="#257F49"
             />
             <View className="ml-4 flex-1">
               <Text className="text-base font-semibold text-green-base">
-                Exportar Lista
+                Relatórios
               </Text>
               <Text className="text-sm text-gray-600">
-                Gerar relatório de pacientes
+                Análises e relatórios
               </Text>
             </View>
             <MaterialCommunityIcons
@@ -248,8 +244,8 @@ export default function PatientList() {
           style={{ borderRadius: 18 }}
         >
           <Text className="text-green-base text-base text-center font-medium">
-            💡 Mantenha contato regular com seus pacientes para melhor
-            acompanhamento!
+            💡 Mantenha um acompanhamento próximo dos seus pacientes para
+            oferecer o melhor suporte nutricional!
           </Text>
         </View>
       </ScrollView>

@@ -40,7 +40,17 @@ export default function Login() {
       if (user) {
         login(user);
 
-        if (!user.preferences) {
+        const hasCompletePreferences =
+          user.preferences &&
+          user.preferences.objective &&
+          user.preferences.activityLevel &&
+          user.preferences.sex &&
+          user.preferences.age &&
+          user.preferences.height &&
+          user.preferences.weight &&
+          user.preferences.weightGoal;
+
+        if (!hasCompletePreferences) {
           router.replace("/user-objetives");
         } else {
           if (user.type === "patient") {

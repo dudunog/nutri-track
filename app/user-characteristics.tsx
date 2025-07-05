@@ -15,6 +15,14 @@ export default function UserCharacteristics() {
   const [weightGoal, setWeightGoal] = useState("");
   const [loading, setLoading] = useState(false);
 
+  if (!user) {
+    return (
+      <View className="flex-1 bg-gray-100 justify-center items-center">
+        <Text className="text-green-base text-lg">Carregando...</Text>
+      </View>
+    );
+  }
+
   const handleContinue = async () => {
     if (!age.trim() || !height.trim() || !weight.trim() || !weightGoal.trim()) {
       Alert.alert("Erro", "Preencha todos os campos");
@@ -25,6 +33,7 @@ export default function UserCharacteristics() {
     const heightNum = parseInt(height);
     const weightNum = parseInt(weight);
     const weightGoalNum = parseInt(weightGoal);
+
 
     if (ageNum < 10 || ageNum > 120) {
       Alert.alert("Erro", "Idade deve estar entre 10 e 120 anos");
@@ -65,12 +74,15 @@ export default function UserCharacteristics() {
 
       updateUser(updatedUser);
 
-      if (updatedUser.type === "patient") {
+      if (user.type === "patient") {
         router.replace("/home");
-      } else if (updatedUser.type === "nutritionist") {
+      } else if (user.type === "nutritionist") {
         router.replace("/nutritionist-home");
+      } else {
+        Alert.alert("Erro", "Tipo de usuário não reconhecido");
       }
     } catch (error: any) {
+      console.error("Erro ao salvar características:", error);
       Alert.alert("Erro", error.message || "Erro ao salvar características");
     } finally {
       setLoading(false);
@@ -93,7 +105,7 @@ export default function UserCharacteristics() {
         </View>
 
         <View
-          className="bg-white rounded-3xl shadow-md p-6 mb-6"
+          className="mt-4 bg-white rounded-3xl shadow-md p-6 mb-6 gap-2"
           style={{ borderRadius: 24 }}
         >
           <Text className="text-xl font-bold text-green-base mb-6 text-center">
@@ -118,7 +130,7 @@ export default function UserCharacteristics() {
             <Text className="text-base text-gray-700 mb-3">
               Qual a sua altura?
             </Text>
-            <View className="flex-row items-center">
+            <View className="flex-row items-center gap-2">
               <TextInput
                 className="border border-gray-300 rounded-xl p-4 text-base bg-white flex-1 mr-3"
                 placeholder="Altura"
@@ -127,7 +139,7 @@ export default function UserCharacteristics() {
                 keyboardType="numeric"
                 style={{ fontSize: 16 }}
               />
-              <View className="bg-green-soft px-4 py-4 rounded-xl">
+              <View className="bg-green-soft px-4 py-4 rounded-xl p-4">
                 <Text className="text-sm font-bold text-green-base">cm</Text>
               </View>
             </View>
@@ -137,7 +149,7 @@ export default function UserCharacteristics() {
             <Text className="text-base text-gray-700 mb-3">
               Quanto você pesa?
             </Text>
-            <View className="flex-row items-center">
+            <View className="flex-row items-center gap-2">
               <TextInput
                 className="border border-gray-300 rounded-xl p-4 text-base bg-white flex-1 mr-3"
                 placeholder="Peso"
@@ -146,7 +158,7 @@ export default function UserCharacteristics() {
                 keyboardType="numeric"
                 style={{ fontSize: 16 }}
               />
-              <View className="bg-green-soft px-4 py-4 rounded-xl">
+              <View className="bg-green-soft px-4 py-4 rounded-xl p-4">
                 <Text className="text-sm font-bold text-green-base">kg</Text>
               </View>
             </View>
@@ -156,7 +168,7 @@ export default function UserCharacteristics() {
             <Text className="text-base text-gray-700 mb-3">
               Qual é a sua meta de peso?
             </Text>
-            <View className="flex-row items-center">
+            <View className="flex-row items-center gap-2">
               <TextInput
                 className="border border-gray-300 rounded-xl p-4 text-base bg-white flex-1 mr-3"
                 placeholder="Meta"
@@ -165,7 +177,7 @@ export default function UserCharacteristics() {
                 keyboardType="numeric"
                 style={{ fontSize: 16 }}
               />
-              <View className="bg-green-soft px-4 py-4 rounded-xl">
+              <View className="bg-green-soft px-4 py-4 rounded-xl p-4">
                 <Text className="text-sm font-bold text-green-base">kg</Text>
               </View>
             </View>

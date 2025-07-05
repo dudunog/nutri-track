@@ -63,14 +63,7 @@ export default function UserRegistration() {
 
       login(user);
 
-      Alert.alert("Sucesso", "Conta criada com sucesso!", [
-        {
-          text: "OK",
-          onPress: () => {
-            router.replace("/user-objetives");
-          },
-        },
-      ]);
+      router.replace("/user-objetives");
     } catch (error: any) {
       Alert.alert("Erro", error.message || "Erro ao criar conta");
     } finally {

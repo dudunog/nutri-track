@@ -14,7 +14,7 @@ import { ListMealsUseCase } from "../usecases/list-meals.usecase";
 import { MealApiRepository } from "../data/meal-api.repository";
 import { GetNutritionistUseCase } from "../usecases/get-nutritionist.usecase";
 import { NutritionistApiRepository } from "../data/nutritionist-api.repository";
-import { useAuth } from "../contexts/auth-context";
+import { useAuthGuard } from "../hooks/useAuthGuard";
 import { Tip } from "../domain/tip";
 import { Reminder } from "../domain/reminder";
 import { Meal } from "../domain/meal";
@@ -23,7 +23,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 export default function Home() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuthGuard();
   const [tip, setTip] = useState<Tip | null>(null);
   const [reminder, setReminder] = useState<Reminder | null>(null);
   const [meals, setMeals] = useState<Meal[]>([]);
@@ -64,7 +64,11 @@ export default function Home() {
     (meal) => meal.time > (lastMeal?.time || "00:00")
   );
 
-  if (!user) {
+  if (!isAuthenticated) {
+    return null;
+  }
+
+  if (loading) {
     return (
       <View className="flex-1 bg-gray-100 justify-center items-center">
         <ActivityIndicator size="large" color="#257F49" />
@@ -201,19 +205,11 @@ export default function Home() {
           <Text className="text-2xl" style={{ color: "#257F49" }}>
             ▦
           </Text>
-          <Text className="text-green-base font-bold text-sm mt-1">Painel</Text>
+          <Text className="text-green-base font-bold text-sm mt-1">Início</Text>
         </TouchableOpacity>
         <TouchableOpacity className="items-center flex-1" activeOpacity={0.7}>
-          <Text className="text-2xl">🍳</Text>
-          <Text className="text-black text-sm mt-1">Diário</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          className="items-center flex-1"
-          activeOpacity={0.7}
-          onPress={() => router.push("/analytics")}
-        >
           <Text className="text-2xl">📊</Text>
-          <Text className="text-black text-sm mt-1">Resumo</Text>
+          <Text className="text-black text-sm mt-1">Analytics</Text>
         </TouchableOpacity>
         <TouchableOpacity className="items-center flex-1" activeOpacity={0.7}>
           <Text className="text-2xl">👤</Text>

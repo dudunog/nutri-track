@@ -14,11 +14,11 @@ import { useRouter } from "expo-router";
 import { GetNutritionistUseCase } from "../usecases/get-nutritionist.usecase";
 import { NutritionistApiRepository } from "../data/nutritionist-api.repository";
 import { Nutritionist } from "../domain/nutritionist";
-import { useAuth } from "../contexts/auth-context";
+import { useAuthGuard } from "../hooks/useAuthGuard";
 
 export default function NutritionistProfile() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuthGuard();
   const [nutritionist, setNutritionist] = useState<Nutritionist | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -94,6 +94,10 @@ export default function NutritionistProfile() {
       router.push("/nutritionist-edit-profile" as any);
     }
   };
+
+  if (!isAuthenticated) {
+    return null;
+  }
 
   if (loading) {
     return (

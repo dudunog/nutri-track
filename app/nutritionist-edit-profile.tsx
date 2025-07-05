@@ -15,11 +15,11 @@ import { GetNutritionistUseCase } from "../usecases/get-nutritionist.usecase";
 import { UpdateNutritionistUseCase } from "../usecases/update-nutritionist.usecase";
 import { NutritionistApiRepository } from "../data/nutritionist-api.repository";
 import { Nutritionist } from "../domain/nutritionist";
-import { useAuth } from "../contexts/auth-context";
+import { useAuthGuard } from "../hooks/useAuthGuard";
 
 export default function NutritionistEditProfile() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuthGuard();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -109,6 +109,10 @@ export default function NutritionistEditProfile() {
       setSaving(false);
     }
   };
+
+  if (!isAuthenticated) {
+    return null;
+  }
 
   if (loading) {
     return (

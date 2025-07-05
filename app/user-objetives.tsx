@@ -14,6 +14,14 @@ export default function UserObjectives() {
   );
   const [loading, setLoading] = useState(false);
 
+  if (!user) {
+    return (
+      <View className="flex-1 bg-gray-100 justify-center items-center">
+        <Text className="text-green-base text-lg">Carregando...</Text>
+      </View>
+    );
+  }
+
   const handleSelect = (option: string) => {
     setSelectedObjective(option);
   };
@@ -83,7 +91,7 @@ export default function UserObjectives() {
       </View>
 
       <View
-        className="bg-white rounded-3xl shadow-md p-6 mb-6"
+        className="mt-4 bg-white rounded-3xl shadow-md p-6 mb-6"
         style={{ borderRadius: 24 }}
       >
         <Text className="text-xl font-bold text-green-base mb-6 text-center">

@@ -2,18 +2,14 @@ import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import { useRouter } from "expo-router";
 import { Button } from "@/presentation/components/button";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useAuth } from "../contexts/auth-context";
+import { useAuthGuard } from "../hooks/useAuthGuard";
 
 export default function NutritionistHome() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuthGuard();
 
-  if (!user) {
-    return (
-      <View className="flex-1 bg-gray-100 justify-center items-center">
-        <Text className="text-green-base text-lg">Carregando...</Text>
-      </View>
-    );
+  if (!isAuthenticated) {
+    return null;
   }
 
   return (

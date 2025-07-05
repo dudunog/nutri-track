@@ -387,6 +387,55 @@
         "weight": 60,
         "weightGoal": 60
       }
+    },
+    {
+      "id": "532f",
+      "name": "teste",
+      "email": "joao.nutri123@nutritrack.com",
+      "password": "123456",
+      "type": "patient",
+      "nutritionistId": 1
+    },
+    {
+      "id": "bdb2",
+      "name": "teste hehehe",
+      "email": "joao.nutri123@nutritrack.com",
+      "password": "123456",
+      "type": "patient",
+      "nutritionistId": 1
+    },
+    {
+      "id": "09ac",
+      "name": "teste hehehe",
+      "email": "joao.nutri123@nutritrack.com",
+      "password": "123456",
+      "type": "patient",
+      "nutritionistId": 1
+    },
+    {
+      "id": "a3fb",
+      "name": "teste hehehe",
+      "email": "joao.nutri123@nutritrack.com",
+      "password": "123456",
+      "type": "patient",
+      "nutritionistId": 1
+    },
+    {
+      "id": "a8eb",
+      "name": "teste hehehe",
+      "email": "joao.nutri123@nutritrack.com",
+      "password": "123456",
+      "type": "patient",
+      "nutritionistId": 1,
+      "preferences": {
+        "objective": "gain-muscle",
+        "activityLevel": "intense",
+        "sex": "man",
+        "age": 21,
+        "height": 175,
+        "weight": 70,
+        "weightGoal": 60
+      }
     }
   ]
 }
