@@ -1,29 +1,30 @@
 import { useEffect, useState } from "react";
 import { ScrollView, View, Text, ActivityIndicator } from "react-native";
-import { ListFoodsUseCase } from "../usecases/list-foods.usecase";
-import { Food } from "../domain/food";
-import { FoodListItem } from "../presentation/components/food-list-item";
+import { ListMealsUseCase } from "../usecases/list-meals.usecase";
+import { MealApiRepository } from "../data/meal-api.repository";
+import { Meal } from "../domain/meal";
+import { MealListItem } from "../presentation/components/meal-list-item";
 
-export default function FoodList() {
-  const [foods, setFoods] = useState<Food[]>([]);
+export default function MealHistory() {
+  const [meals, setMeals] = useState<Meal[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchFoods = async () => {
+    async function fetchMeals() {
       setLoading(true);
-      setError(null);
       try {
-        const data = await new ListFoodsUseCase().execute();
-        setFoods(data);
+        const mealsData = await new ListMealsUseCase(
+          new MealApiRepository()
+        ).execute();
+        setMeals(mealsData);
       } catch (e: any) {
-        setError(e.message || "Erro ao buscar alimentos");
+        setError(e.message || "Erro ao buscar refeições");
       } finally {
         setLoading(false);
       }
-    };
-
-    fetchFoods();
+    }
+    fetchMeals();
   }, []);
 
   return (
@@ -32,7 +33,7 @@ export default function FoodList() {
       contentContainerStyle={{ paddingHorizontal: 20, paddingVertical: 28 }}
     >
       <Text className="text-3xl font-bold text-green-base mb-8 text-center">
-        Lista de Alimentos
+        Histórico de Refeições
       </Text>
       {loading && (
         <ActivityIndicator size="large" color="#257F49" className="mt-10" />
@@ -40,9 +41,9 @@ export default function FoodList() {
       {error && (
         <Text className="text-red-600 text-center mt-4 text-lg">{error}</Text>
       )}
-      <View className="mt-5">
-        {foods.map((food) => (
-          <FoodListItem key={food.id} food={food} />
+      <View className="mt-6">
+        {meals.map((meal) => (
+          <MealListItem key={meal.id} meal={meal} />
         ))}
       </View>
     </ScrollView>
