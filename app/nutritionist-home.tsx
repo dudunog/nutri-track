@@ -219,7 +219,11 @@ export default function NutritionistHome() {
           <Text className="text-2xl">👥</Text>
           <Text className="text-black text-sm mt-1">Pacientes</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="items-center flex-1" activeOpacity={0.7}>
+        <TouchableOpacity
+          className="items-center flex-1"
+          activeOpacity={0.7}
+          onPress={() => router.push("/analytics")}
+        >
           <Text className="text-2xl">📊</Text>
           <Text className="text-black text-sm mt-1">Relatórios</Text>
         </TouchableOpacity>

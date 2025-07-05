@@ -394,7 +394,16 @@
       "email": "joao.nutri123@nutritrack.com",
       "password": "123456",
       "type": "patient",
-      "nutritionistId": 1
+      "nutritionistId": 1,
+      "preferences": {
+        "objective": "maintain-weight",
+        "activityLevel": "intense",
+        "sex": "man",
+        "age": 34,
+        "height": 170,
+        "weight": 70,
+        "weightGoal": 50
+      }
     },
     {
       "id": "bdb2",
